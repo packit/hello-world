@@ -1,0 +1,11 @@
+---
+specfile_path: hello.spec
+synced_files:
+  - hello.spec
+downstream_package_name: hello
+jobs:
+- job: copr_build
+  trigger: pull_request
+  metadata:
+    targets:
+    - rhelbeta-8-x86_64
