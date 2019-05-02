@@ -3,6 +3,10 @@ specfile_path: hello.spec
 synced_files:
   - hello.spec
 downstream_package_name: hello
+acrions:
+  post-upstream-clone: "python3 setup.py sdist --dist-dir ."
+current_version_command: ["python3", "setup.py", "--version"]
+create_tarball_command: ["python3", "setup.py", "sdist", "--dist-dir", "."]
 jobs:
 - job: copr_build
   trigger: pull_request
