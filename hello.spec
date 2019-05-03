@@ -5,7 +5,7 @@ Summary:        Nice and a polite tool
 
 License:        MIT
 URL:            https://github.com/packit-service/hello-world
-Source0:        hello-0.1.0.tar.gz
+Source0:        hello-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  python3-devel
 
