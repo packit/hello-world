@@ -40,7 +40,7 @@ def main():
         usage()
     elif args_n > 2:
         usage()
-    print(f"Hello {sys.argv[1]}")
+    print(f"Hello {sys.argv[1]}, from the Summit!")
 
 
 if __name__ == '__main__':
