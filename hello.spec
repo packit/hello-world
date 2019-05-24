@@ -15,8 +15,6 @@ BuildRequires:  python3-devel
 
 %prep
 %autosetup -n %{name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
 
 %build
 %py3_build
