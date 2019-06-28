@@ -14,5 +14,5 @@ Just open a pull request on this repository and packit service will build your c
 
 Follow the steps provided by the packit service and then install this tool like this:
 ```bash
-$ yum install hello
+$ dnf install hello
 ```
