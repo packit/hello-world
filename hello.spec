@@ -2,7 +2,6 @@ Name:           hello
 Version:        0.1.0
 Release:        1%{?dist}
 Summary:        Nice and a polite tool to make your day
-
 License:        MIT
 URL:            https://github.com/packit-service/hello-world
 Source0:        hello-%{version}.tar.gz
