@@ -17,5 +17,5 @@ Follow the steps provided by the packit service and then install this tool like 
 $ dnf install hello
 ```
 
-# stg
+## stg
 
