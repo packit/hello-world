@@ -13,3 +13,9 @@ jobs:
   metadata:
     targets:
     - rhelbeta-8-x86_64
+- job: tests
+  trigger: pull_request
+  metadata:
+    targets:
+    - rhelbeta-8-x86_64
+
