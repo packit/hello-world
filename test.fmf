@@ -1,0 +1,8 @@
+/sanity:
+  discover:
+     how: fmf
+       repository: https://src.fedoraproject.org/tests/selinux
+       filter: "tier:1 | component:selinux-policy"
+
+  execute:
+     how: beakerlib
