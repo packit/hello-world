@@ -1,0 +1,9 @@
+---
+/test/build/smoke:
+  execute:
+    how: shell
+    commands:
+      - dnf -y install httpd curl
+      - systemctl start httpd
+      - echo foo > /var/www/html/index.html
+      - curl http://localhost/ | grep foo
