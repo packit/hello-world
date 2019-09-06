@@ -13,7 +13,7 @@ BuildRequires:  python3-devel
 
 
 %prep
-%autosetup -n %{name}-%{version}
+%autosetup
 
 %build
 %py3_build
