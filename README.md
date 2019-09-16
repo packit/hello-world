@@ -16,3 +16,5 @@ Follow the steps provided by the packit service and then install this tool like 
 ```bash
 $ dnf install hello
 ```
+
+## Test results
