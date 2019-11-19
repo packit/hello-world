@@ -16,6 +16,8 @@ jobs:
     - fedora-30-x86_64
     - fedora-31-x86_64
     - fedora-rawhide-x86_64
+    - epel-7-x86_64
+    - epel-8-x86_64
 
 - job: tests
   trigger: pull_request
