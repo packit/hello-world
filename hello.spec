@@ -1,4 +1,4 @@
-Name:           hello
+xxxName:           hello
 Version:        0.1.0
 Release:        1%{?dist}
 Summary:        Nice and a polite tool to make your day
