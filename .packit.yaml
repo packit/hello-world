@@ -11,11 +11,6 @@ downstream_package_name: hello
 jobs:
 - job: copr_build
   trigger: pull_request
-  metadata:
-    targets:
-    - fedora-29-x86_64
-    - fedora-30-x86_64
-    - fedora-rawhide-x86_64
 
 - job: tests
   trigger: pull_request
