@@ -28,3 +28,6 @@ jobs:
   trigger: release
   metadata:
     dist-git-branch: fedora-all
+notifications:
+  pull_request:
+    successful_build: false
