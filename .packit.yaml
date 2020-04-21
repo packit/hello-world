@@ -1,5 +1,5 @@
 ---
-specfile_path: hello.spec
+`specfile_path: hello.spec
 synced_files:
   - hello.spec
 upstream_package_name: hello
