@@ -22,6 +22,7 @@ jobs:
     targets:
     - fedora-stable
 
+
 - job: tests
   trigger: pull_request
   metadata:
