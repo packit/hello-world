@@ -7,7 +7,6 @@ $ hello world!
 Hello world!
 ```
 
-
 ## How to?
 
 Just open a pull request on this repository and packit service will build your changes and provide an RPM repository using your pull request as a source.
