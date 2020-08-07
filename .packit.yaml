@@ -16,6 +16,9 @@ jobs:
     - fedora-31-x86_64
     - fedora-32-x86_64
     - fedora-rawhide-x86_64
+    owner: lachmanfrantisek
+    project: testing-project-for-packit
+
 # change
 - job: copr_build
   trigger: release
@@ -30,6 +33,8 @@ jobs:
     - fedora-31-x86_64
     - fedora-32-x86_64
     - fedora-rawhide-x86_64
+    owner: lachmanfrantisek
+    project: testing-project-for-packit
 
 - job: propose_downstream
   trigger: release
