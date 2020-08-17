@@ -13,8 +13,7 @@ jobs:
   trigger: pull_request
   metadata:
     targets:
-    - fedora-stable-x86_64
-    - fedora-rawhide-x86_64
+    - fedora-all
 
 - job: copr_build
   trigger: release
