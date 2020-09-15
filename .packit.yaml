@@ -13,8 +13,7 @@ jobs:
   trigger: pull_request
   metadata:
     targets:
-    - fedora-30-x86_64
-    - fedora-31-x86_64
+    - fedora-stable-x86_64
     - fedora-rawhide-x86_64
 
 - job: copr_build
@@ -27,8 +26,7 @@ jobs:
   trigger: pull_request
   metadata:
     targets:
-    - fedora-30-x86_64
-    - fedora-31-x86_64
+    - fedora-stable-x86_64
     - fedora-rawhide-x86_64
 
 - job: propose_downstream
