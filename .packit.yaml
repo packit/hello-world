@@ -10,8 +10,9 @@ downstream_package_name: hello
 # create_tarball_command: ["python3", "setup.py", "sdist", "--dist-dir", "."]
 jobs:
 - job: copr_build
-  trigger: pull_request
+  trigger: commit
   metadata:
+    branch: master
     targets:
     - fedora-stable-x86_64
     - fedora-rawhide-x86_64
