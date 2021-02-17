@@ -1,0 +1,13 @@
+---
+prepare:
+  how: install
+  package:
+    - curl
+    - httpd
+
+execute:
+  how: tmt
+  script:
+    - systemctl start httpd
+    - echo foo > /var/www/html/index.html
+    - curl http://localhost/ | grep foo
