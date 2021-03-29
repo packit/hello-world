@@ -13,7 +13,7 @@ jobs:
   trigger: pull_request
   metadata:
     targets:
-    - centos-stream-x86_64
+    - centos-stream-8-x86_64
 
 - job: copr_build
   trigger: release
