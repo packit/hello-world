@@ -6,14 +6,14 @@ upstream_package_name: hello
 downstream_package_name: hello
 # actions:
 #   post-upstream-clone: "python3 setup.py sdist --dist-dir ."
-# current_version_command: ["python3", "setup.py", "--version"]
+current_version_command: ["python3", "setup.py", "--version"]
 # create_tarball_command: ["python3", "setup.py", "sdist", "--dist-dir", "."]
 jobs:
 - job: copr_build
   trigger: pull_request
   metadata:
     targets:
-    - fedora-all
+    - fedora-rawhide
 
 - job: copr_build
   trigger: release
