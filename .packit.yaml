@@ -13,13 +13,15 @@ jobs:
   trigger: pull_request
   metadata:
     targets:
-    - fedora-all
+    - fedora-all-x86_64
+    - fedora-all-aarch64
 
 - job: copr_build
   trigger: release
   metadata:
     targets:
-    - fedora-stable
+    - fedora-all-x86_64
+    - fedora-all-aarch64
 
 - job: propose_downstream
   trigger: release
