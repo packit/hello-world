@@ -7,6 +7,7 @@ URL:            https://github.com/packit-service/hello-world
 Source0:        hello-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 
 %description
 %{summary}
