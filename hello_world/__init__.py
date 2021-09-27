@@ -27,6 +27,10 @@ __version__ = "0.1.0"
 import sys
 
 
+def magic_number() -> int:
+    return 7
+
+
 def usage():
     print(
         "Usage: hello NAME\n"
