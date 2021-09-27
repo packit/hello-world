@@ -28,7 +28,7 @@ import sys
 
 
 def magic_number() -> int:
-    return 7
+    return 42
 
 
 def usage():
