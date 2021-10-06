@@ -4,10 +4,6 @@ synced_files:
   - hello.spec
 upstream_package_name: hello
 downstream_package_name: hello
-
-actions:
-  get-current-version:
-
 # actions:
 #   post-upstream-clone: "python3 setup.py sdist --dist-dir ."
 # current_version_command: ["python3", "setup.py", "--version"]
