@@ -10,4 +10,4 @@ execute:
   script:
     - systemctl start httpd
     - echo foo > /var/www/html/index.html
-    - curl http://localhost/ | grep foo
+    - curl http://localhost/ | grep boo
