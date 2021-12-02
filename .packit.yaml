@@ -4,6 +4,8 @@ synced_files:
   - hello.spec
 upstream_package_name: hello
 downstream_package_name: hello
+actions:
+  get-current-version:
 # actions:
 #   post-upstream-clone: "python3 setup.py sdist --dist-dir ."
 # current_version_command: ["python3", "setup.py", "--version"]
@@ -14,7 +16,6 @@ jobs:
   metadata:
     targets:
     - fedora-stable-x86_64
-    - fedora-rawhide-x86_64
 
 - job: copr_build
   trigger: release
@@ -34,7 +35,6 @@ jobs:
   metadata:
     targets:
     - fedora-stable-x86_64
-    - fedora-rawhide-x86_64
 
 - job: propose_downstream
   trigger: release
