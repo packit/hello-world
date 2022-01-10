@@ -11,3 +11,4 @@ execute:
     - systemctl start httpd
     - echo foo > /var/www/html/index.html
     - curl http://localhost/ | grep foo
+    - env
