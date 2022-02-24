@@ -13,10 +13,7 @@ jobs:
   trigger: pull_request
   metadata:
     targets:
-      epel-8-x86_64:
-        distros: [centos-stream-8]
-      fedora-35-x86_64:
-        distros: [fedora-35, fedora-36]
+      - centos-stream-8-x86_64
 
 - job: propose_downstream
   trigger: release
