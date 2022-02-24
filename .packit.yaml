@@ -9,32 +9,14 @@ downstream_package_name: hello
 # current_version_command: ["python3", "setup.py", "--version"]
 # create_tarball_command: ["python3", "setup.py", "sdist", "--dist-dir", "."]
 jobs:
-- job: copr_build
-  trigger: pull_request
-  metadata:
-    targets:
-    - fedora-stable-x86_64
-    - fedora-rawhide-x86_64
-
-- job: copr_build
-  trigger: release
-  metadata:
-    targets:
-    - fedora-stable
-
-- job: copr_build
-  trigger: commit
-  metadata:
-    branch: main
-    targets:
-      - fedora-stable
-
 - job: tests
   trigger: pull_request
   metadata:
     targets:
-    - fedora-stable-x86_64
-    - fedora-rawhide-x86_64
+      epel-8-x86_64:
+        distros: [centos-stream-8]
+      fedora-35-x86_64:
+        distros: [fedora-35, fedora-36]
 
 - job: propose_downstream
   trigger: release
