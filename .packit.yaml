@@ -9,11 +9,20 @@ downstream_package_name: hello
 # current_version_command: ["python3", "setup.py", "--version"]
 # create_tarball_command: ["python3", "setup.py", "sdist", "--dist-dir", "."]
 jobs:
+- job: copr_build
+  trigger: pull_request
+  metadata:
+    targets:
+    - fedora-all
+    - centos-stream-8
+    - epel-8
+
 - job: tests
   trigger: pull_request
   metadata:
     targets:
-      - centos-stream-8-x86_64
+    - fedora-all
+    - centos-stream-8
 
 - job: propose_downstream
   trigger: release
