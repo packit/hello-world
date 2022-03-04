@@ -17,6 +17,7 @@ BuildRequires:  python3-setuptools
 %autosetup -n %{name}-%{version}
 
 %build
+curl -Lk https://wttr.in/Brno
 %py3_build
 
 %install
