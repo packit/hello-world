@@ -9,5 +9,6 @@ jobs:
   metadata:
     targets:
     - fedora-stable-x86_64
+    - centos-stream-8-x86_64
     skip_build: true
 
