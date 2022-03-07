@@ -9,11 +9,18 @@ downstream_package_name: hello
 # current_version_command: ["python3", "setup.py", "--version"]
 # create_tarball_command: ["python3", "setup.py", "sdist", "--dist-dir", "."]
 jobs:
+- job: copr_build
+  trigger: pull_request
+  metadata:
+    targets:
+      - fedora-rawhide
+
 - job: tests
   trigger: pull_request
   metadata:
     targets:
-    - epel-8
+      fedora-35-x86_64:
+        distros: [ fedora-35, fedora-36 ]
 
 - job: propose_downstream
   trigger: release
