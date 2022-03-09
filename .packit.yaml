@@ -11,10 +11,17 @@ downstream_package_name: hello
 jobs:
 - job: copr_build
   trigger: pull_request
+  identifier: first
   metadata:
     targets:
-    - fedora-stable-x86_64
-    - fedora-rawhide-x86_64
+    - fedora-35-x86_64
+
+- job: copr_build
+  trigger: pull_request
+  identifier: second
+  metadata:
+    targets:
+    - fedora-35-x86_64
 
 - job: copr_build
   trigger: release
@@ -28,13 +35,6 @@ jobs:
     branch: main
     targets:
       - fedora-stable
-
-- job: tests
-  trigger: pull_request
-  metadata:
-    targets:
-    - fedora-stable-x86_64
-    - fedora-rawhide-x86_64
 
 - job: propose_downstream
   trigger: release
