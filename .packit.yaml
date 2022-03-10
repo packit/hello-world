@@ -13,14 +13,17 @@ jobs:
   trigger: pull_request
   metadata:
     targets:
-      - fedora-rawhide
+      - fedora-35-x86_64
+      - epel-8-x86_64
 
 - job: tests
   trigger: pull_request
   metadata:
     targets:
       fedora-35-x86_64:
-        distros: [ fedora-35, fedora-36 ]
+        distros: [fedora-35, fedora-36]
+      epel-8-x86_64:
+        distros: [centos-stream-8]
 
 - job: propose_downstream
   trigger: release
