@@ -13,6 +13,5 @@ jobs:
   trigger: pull_request
   metadata:
     targets:
-    - fedora-36
+    - fedora-34
     - centos-stream-9
-    - fedora-rawhide
