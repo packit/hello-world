@@ -18,6 +18,9 @@ BuildRequires:  python3-setuptools
 
 %build
 %py3_build
+%if 0%{?fedora} < 35
+exit 1
+%endif
 
 %install
 %py3_install
