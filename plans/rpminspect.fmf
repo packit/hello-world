@@ -1,0 +1,17 @@
+summary:
+    Fetch SRPM and check it with rpminspect
+discover:
+    how: shell
+    tests:
+      - name: rpminspect
+        test: rpminspect-fedora /tmp/*.src.rpm
+prepare:
+  - name: packages
+    how: install
+    package:
+    - rpminspect
+    - rpminspect-data-fedora
+  - how: shell
+    script: cd /tmp && curl -O ${PACKIT_SRPM_URL}
+execute:
+    how: tmt
