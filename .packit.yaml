@@ -1,4 +1,5 @@
 ---
+packit_instances: ["prod", "stg"]
 specfile_path: hello.spec
 synced_files:
   - hello.spec
@@ -38,6 +39,7 @@ jobs:
 
 - job: propose_downstream
   trigger: release
+  packit_instances: ["stg"]
   metadata:
     dist_git_branches:
     - fedora-all
