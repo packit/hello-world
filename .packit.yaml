@@ -1,5 +1,6 @@
 ---
 specfile_path: hello.spec
+packit_instances: ["prod", "stg"]
 synced_files:
   - hello.spec
 upstream_package_name: hello
