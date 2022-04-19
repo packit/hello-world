@@ -16,6 +16,12 @@ jobs:
     targets:
     - fedora-all
 
+- job: tests
+  trigger: pull_request
+  metadata:
+    targets:
+    - fedora-all
+
 - job: copr_build
   trigger: release
   metadata:
