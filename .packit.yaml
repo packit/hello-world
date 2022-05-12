@@ -9,10 +9,12 @@ downstream_package_name: hello
 #   post-upstream-clone: "python3 setup.py sdist --dist-dir ."
 # current_version_command: ["python3", "setup.py", "--version"]
 # create_tarball_command: ["python3", "setup.py", "sdist", "--dist-dir", "."]
+
+release_suffix: "someTests"
+
 jobs:
 - job: copr_build
   trigger: pull_request
-  release_suffix: ""
   metadata:
     targets:
     - fedora-all
