@@ -15,9 +15,10 @@ release_suffix: "someTests"
 jobs:
 - job: copr_build
   trigger: pull_request
+  release_suffix: null
   metadata:
     targets:
-    - fedora-all
+    - fedora-rawhide
 
 - job: copr_build
   trigger: release
