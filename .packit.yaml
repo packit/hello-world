@@ -1,4 +1,5 @@
 ---
+packit_instances: ["prod", "stg"]
 specfile_path: hello.spec
 synced_files:
   - hello.spec
@@ -8,13 +9,16 @@ downstream_package_name: hello
 #   post-upstream-clone: "python3 setup.py sdist --dist-dir ."
 # current_version_command: ["python3", "setup.py", "--version"]
 # create_tarball_command: ["python3", "setup.py", "sdist", "--dist-dir", "."]
+
+release_suffix: "someTests"
+
 jobs:
 - job: copr_build
   trigger: pull_request
+  release_suffix: null
   metadata:
     targets:
-    - fedora-stable-x86_64
-    - fedora-rawhide-x86_64
+    - fedora-rawhide
 
 - job: copr_build
   trigger: release
@@ -29,15 +33,9 @@ jobs:
     targets:
       - fedora-stable
 
-- job: tests
-  trigger: pull_request
-  metadata:
-    targets:
-    - fedora-stable-x86_64
-    - fedora-rawhide-x86_64
-
 - job: propose_downstream
   trigger: release
+  packit_instances: ["stg"]
   metadata:
     dist_git_branches:
     - fedora-all
