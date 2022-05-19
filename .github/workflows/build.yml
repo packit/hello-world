@@ -1,0 +1,16 @@
+name: SRPM Build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+      - uses: mfocko/packit-actions/srpm@add-srpm-build
+      - name: Upload the SRPM
+        uses: actions/upload-artifact@v2
+        with:
+          name: SRPM package
+          path: '*.src.rpm'
