@@ -19,17 +19,8 @@ jobs:
 
 - job: copr_build
   trigger: release
-  targets:
-  - fedora-stable
 
 - job: copr_build
   trigger: commit
   branch: main
-  targets:
-  - fedora-stable
 
-- job: propose_downstream
-  trigger: release
-  packit_instances: ["stg"]
-  dist_git_branches:
-  - fedora-all
