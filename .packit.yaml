@@ -9,7 +9,7 @@ downstream_package_name: hello
 # current_version_command: ["python3", "setup.py", "--version"]
 # create_tarball_command: ["python3", "setup.py", "sdist", "--dist-dir", "."]
 jobs:
-- job: copr_build
+- job: tests
   trigger: pull_request
   metadata:
     targets:
