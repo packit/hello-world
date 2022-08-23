@@ -16,6 +16,8 @@ jobs:
 - job: copr_build
   trigger: pull_request
   release_suffix: null
+  project: yikes
+  owner: mfocko
 
 - job: copr_build
   trigger: release
