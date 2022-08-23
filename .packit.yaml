@@ -16,8 +16,8 @@ jobs:
 - job: copr_build
   trigger: pull_request
   release_suffix: null
-  project: yikes
-  owner: mfocko
+  owner: lachmanfrantisek
+  project: testing-project-for-packit-3
 
 - job: copr_build
   trigger: release
