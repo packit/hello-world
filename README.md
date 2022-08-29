@@ -13,3 +13,5 @@ and provide an RPM repository using your pull request as a source.
 Follow the steps provided by the packit service and then install this tool like this:
 
     $ dnf install hello
+
+Add a not usefull comment just to be able to create a PR
