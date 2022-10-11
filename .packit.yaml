@@ -31,10 +31,10 @@ jobs:
 
 - job: tests
   trigger: pull_request
-  metadata:
-    targets:
-    - fedora-all
-    use_internal_tf: True
+  use_internal_tf: True
+  targets:
+    epel-7-x86_64:
+      distros: [RHEL-7.9-ZStream]
 
 - job: propose_downstream
   trigger: release
