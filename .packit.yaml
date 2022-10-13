@@ -14,3 +14,8 @@ jobs:
   targets:
   - fedora-all
   scratch: true
+
+- job: build
+  trigger: pull_request
+  targets:
+  - fedora-rawhide
