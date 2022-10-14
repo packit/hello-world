@@ -11,6 +11,6 @@ actions:
 jobs:
 - job: production_build
   trigger: pull_request
-  metadata:
-    targets:
-    - fedora-rawhide-x86_64
+  targets:
+  - fedora-rawhide-x86_64
+  scratch: true
