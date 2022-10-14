@@ -1,5 +1,5 @@
 ---
-packit_instance: ["stg"]
+packit_instances: ["stg"]
 specfile_path: hello.spec
 synced_files:
   - hello.spec
