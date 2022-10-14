@@ -9,8 +9,9 @@ actions:
   post-upstream-clone: "blabla"
 
 jobs:
-- job: build
+- job: production_build
   trigger: pull_request
+  scratch: true
   metadata:
     targets:
     - fedora-rawhide-x86_64
