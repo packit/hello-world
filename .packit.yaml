@@ -1,7 +1,8 @@
 ---
 packit_instances: ["prod", "stg"]
 specfile_path: hello.spec
-synced_files:
+files_to_sync:
+  - .packit.yaml
   - hello.spec
 upstream_package_name: hello
 downstream_package_name: hello
@@ -12,34 +13,29 @@ downstream_package_name: hello
 jobs:
 - job: copr_build
   trigger: pull_request
-  metadata:
-    targets:
-    - fedora-stable-x86_64
-    - fedora-rawhide-x86_64
+  targets:
+  - fedora-stable-x86_64
+  - fedora-rawhide-x86_64
 
 - job: copr_build
   trigger: release
-  metadata:
-    targets:
-    - fedora-stable
+  targets:
+  - fedora-stable
 
 - job: copr_build
   trigger: commit
-  metadata:
-    branch: main
-    targets:
-      - fedora-stable
+  branch: main
+  targets:
+    - fedora-stable
 
 - job: tests
   trigger: pull_request
-  metadata:
-    targets:
-    - fedora-stable-x86_64
-    - fedora-rawhide-x86_64
+  targets:
+  - fedora-stable-x86_64
+  - fedora-rawhide-x86_64
 
 - job: propose_downstream
   trigger: release
   packit_instances: ["stg"]
-  metadata:
-    dist_git_branches:
-    - fedora-all
+  dist_git_branches:
+  - fedora-all
