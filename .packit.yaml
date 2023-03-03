@@ -14,8 +14,7 @@ jobs:
 - job: copr_build
   trigger: pull_request
   targets:
-  - fedora-stable-x86_64
-  - fedora-rawhide-x86_64
+  - fedora-all
 
 - job: copr_build
   trigger: release
@@ -31,8 +30,8 @@ jobs:
 - job: tests
   trigger: pull_request
   targets:
-  - fedora-stable-x86_64
-  - fedora-rawhide-x86_64
+  - fedora-all
+  use_internal_tf: True
 
 - job: propose_downstream
   trigger: release
