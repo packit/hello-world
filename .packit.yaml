@@ -16,6 +16,23 @@ jobs:
   targets:
   - fedora-all
 
+- job: vm_image_build
+  trigger: pull_request
+  image_request:
+    architecture: x86_64
+    image_type: aws
+    upload_request:
+      type: aws
+      options:
+        share_with_accounts: ["727920394381", "125523088429"]
+  image_customizations:
+    packages: [hello]
+  image_distribution: fedora-38
+  owner: packit
+  project: packit-hello-world-1481
+  copr_chroot: fedora-38-x86_64
+
+
 - job: copr_build
   trigger: release
   targets:
