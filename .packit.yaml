@@ -1,9 +1,9 @@
 ---
 packit_instances: ["prod", "stg"]
-specfile_path: hello.spec
+specfile_path: hello-world.spec
 files_to_sync:
   - .packit.yaml
-  - hello.spec
+  - hello-world.spec
 upstream_package_name: hello
 downstream_package_name: hello
 # actions:
@@ -28,7 +28,7 @@ jobs:
         - "727920394381" # ARR
         - "125523088429" # Testing Farm
   image_customizations:
-    packages: [hello]
+    packages: [hello-world]
   image_distribution: fedora-38
   owner: packit
   project: packit-hello-world-1481
