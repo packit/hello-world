@@ -24,7 +24,11 @@ jobs:
     upload_request:
       type: aws
       options:
-        share_with_accounts: ["727920394381", "125523088429"]
+        share_with_accounts:
+        - "727920394381" # ARR
+        - "125523088429" # TF
+        - "564542550944" # ttomecek
+        share_with_sources: ["435116"]
   image_customizations:
     packages: [hello]
   image_distribution: fedora-36
