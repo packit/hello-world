@@ -19,7 +19,7 @@ def main():
     args_n = len(sys.argv)
     if args_n <= 1 or args_n > 2:
         usage()
-    print(f"Hello {sys.argv[1]}")
+    print(f"Hello \033[0;36m{sys.argv[1]}\033[0m")
 
 
 if __name__ == '__main__':
