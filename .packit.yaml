@@ -1,9 +1,9 @@
 ---
 packit_instances: ["prod", "stg"]
-specfile_path: hello.spec
+specfile_path: hello-world.spec
 files_to_sync:
   - .packit.yaml
-  - hello.spec
+  - hello-world.spec
 upstream_package_name: hello
 downstream_package_name: hello
 # actions:
@@ -14,8 +14,26 @@ jobs:
 - job: copr_build
   trigger: pull_request
   targets:
-  - fedora-stable-x86_64
-  - fedora-rawhide-x86_64
+  - fedora-all
+
+- job: vm_image_build
+  trigger: pull_request
+  image_request:
+    architecture: x86_64
+    image_type: aws
+    upload_request:
+      type: aws
+      options:
+        share_with_accounts:
+        - "727920394381" # ARR
+        - "125523088429" # Testing Farm
+  image_customizations:
+    packages: [hello-world]
+  image_distribution: fedora-38
+  owner: packit
+  project: packit-hello-world-1481
+  copr_chroot: fedora-38-x86_64
+
 
 - job: copr_build
   trigger: release
