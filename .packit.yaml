@@ -24,7 +24,9 @@ jobs:
     upload_request:
       type: aws
       options:
-        share_with_accounts: ["727920394381", "125523088429"]
+        share_with_accounts:
+        - "727920394381" # ARR
+        - "125523088429" # Testing Farm
   image_customizations:
     packages: [hello]
   image_distribution: fedora-38
