@@ -1,21 +1,48 @@
 ---
 packit_instances: ["prod", "stg"]
-specfile_path: hello.spec
-files_to_sync:
-  - .packit.yaml
-  - hello.spec
-upstream_package_name: hello
-downstream_package_name: hello
-# actions:
-#   post-upstream-clone: "python3 setup.py sdist --dist-dir ."
-# current_version_command: ["python3", "setup.py", "--version"]
-# create_tarball_command: ["python3", "setup.py", "sdist", "--dist-dir", "."]
+
+packages:
+
+  hello:
+    downstream_package_name: hello
+    upstream_package_name: hello
+    paths: 
+      - ./hello
+    specfile_path: hello.spec
+    files_to_sync: 
+      - hello.spec
+
+  world:
+    downstream_package_name: world
+    upstream_package_name: world
+    paths: 
+      - ./world
+    specfile_path: world.spec
+    files_to_sync: 
+      - world.spec
+
 jobs:
 - job: copr_build
   trigger: pull_request
+  packages:
+  - hello
+  - world
   targets:
-  - fedora-stable-x86_64
-  - fedora-rawhide-x86_64
+  - fedora-rawhide
+
+- job: copr_build
+  trigger: pull_request
+  packages:
+  - hello
+  targets:
+  - fedora-branched
+
+- job: copr_build
+  trigger: pull_request
+  packages:
+  - world
+  targets:
+  - fedora-stable
 
 - job: copr_build
   trigger: release
@@ -27,12 +54,6 @@ jobs:
   branch: main
   targets:
     - fedora-stable
-
-- job: tests
-  trigger: pull_request
-  targets:
-  - fedora-stable-x86_64
-  - fedora-rawhide-x86_64
 
 - job: propose_downstream
   trigger: release
