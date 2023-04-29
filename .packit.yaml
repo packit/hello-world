@@ -6,6 +6,7 @@ files_to_sync:
   - hello.spec
 upstream_package_name: hello
 downstream_package_name: hello
+merge_pr_in_ci: false
 # actions:
 #   post-upstream-clone: "python3 setup.py sdist --dist-dir ."
 # current_version_command: ["python3", "setup.py", "--version"]
