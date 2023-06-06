@@ -1,5 +1,5 @@
 ---
-packit_instances: ["prod", "stg"]
+packit_instances: ["stg"]
 specfile_path: hello-world.spec
 files_to_sync:
   - .packit.yaml
@@ -14,7 +14,7 @@ jobs:
 - job: copr_build
   trigger: pull_request
   targets:
-  - fedora-all
+  - fedora-38-x86_64
 
 - job: vm_image_build
   trigger: pull_request
@@ -30,30 +30,6 @@ jobs:
   image_customizations:
     packages: [hello-world]
   image_distribution: fedora-38
-  owner: packit
-  project: packit-hello-world-1481
   copr_chroot: fedora-38-x86_64
 
 
-- job: copr_build
-  trigger: release
-  targets:
-  - fedora-stable
-
-- job: copr_build
-  trigger: commit
-  branch: main
-  targets:
-    - fedora-stable
-
-- job: tests
-  trigger: pull_request
-  targets:
-  - fedora-stable-x86_64
-  - fedora-rawhide-x86_64
-
-- job: propose_downstream
-  trigger: release
-  packit_instances: ["stg"]
-  dist_git_branches:
-  - fedora-all
