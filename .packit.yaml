@@ -1,5 +1,5 @@
 ---
-packit_instances: ["stg"]
+packit_instances: ["prod"]
 specfile_path: hello-world.spec
 files_to_sync:
   - .packit.yaml
