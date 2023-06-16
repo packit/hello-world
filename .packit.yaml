@@ -1,5 +1,5 @@
 ---
-packit_instances: ["prod", "stg"]
+packit_instances: ["stg"]
 specfile_path: hello.spec
 files_to_sync:
   - .packit.yaml
@@ -14,7 +14,7 @@ jobs:
 - job: copr_build
   trigger: pull_request
   targets:
-  - fedora-all
+  - fedora-rawhide
 
 - job: copr_build
   trigger: release
