@@ -31,10 +31,10 @@ jobs:
         share_with_sources: ["435116"]
   image_customizations:
     packages: [hello-world]
-  image_distribution: fedora-36
+  image_distribution: fedora-38
   owner: packit
   project: packit-hello-world-1363
-  copr_chroot: fedora-36-x86_64
+  copr_chroot: fedora-38-x86_64
 
 
 - job: copr_build
