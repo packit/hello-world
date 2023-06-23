@@ -2,14 +2,15 @@
 prepare:
   how: install
   package:
-    - packit
+    - git
 
 execute:
   how: tmt
   script:
     - env
     - sh -c "echo $container"
-    - packit status https://github.com/packit/packit.git
+    - rpm -qv hello
+    - hello world!
 
 provision:
     how: container
