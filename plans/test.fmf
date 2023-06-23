@@ -13,5 +13,4 @@ execute:
 
 provision:
     how: container
-    image: fedora:latest
-
+    image: $IMAGE
