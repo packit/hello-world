@@ -10,13 +10,8 @@ downstream_package_name: hello
 #   post-upstream-clone: "python3 setup.py sdist --dist-dir ."
 # current_version_command: ["python3", "setup.py", "--version"]
 # create_tarball_command: ["python3", "setup.py", "sdist", "--dist-dir", "."]
-jobs:
-- job: copr_build
-  trigger: pull_request
-  targets:
-  - fedora-stable-x86_64
-  - fedora-rawhide-x86_64
 
+jobs:
 - job: copr_build
   trigger: release
   targets:
@@ -31,11 +26,8 @@ jobs:
 - job: tests
   trigger: pull_request
   targets:
-  - fedora-stable-x86_64
-  - fedora-rawhide-x86_64
-
-- job: propose_downstream
-  trigger: release
-  packit_instances: ["stg"]
-  dist_git_branches:
-  - fedora-all
+  - fedora-38
+  skip_build: true
+  tf_extra_params:
+    environments:
+      - os: null

@@ -2,12 +2,16 @@
 prepare:
   how: install
   package:
-    - curl
-    - httpd
+    - packit
 
 execute:
   how: tmt
   script:
-    - systemctl start httpd
-    - echo foo > /var/www/html/index.html
-    - curl http://localhost/ | grep foo
+    - env
+    - sh -c "echo $container"
+    - packit status https://github.com/packit/packit.git
+
+provision:
+    how: container
+    image: fedora:latest
+
