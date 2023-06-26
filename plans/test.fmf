@@ -2,12 +2,16 @@
 prepare:
   how: install
   package:
-    - curl
-    - httpd
+    - git
 
 execute:
   how: tmt
   script:
-    - systemctl start httpd
-    - echo foo > /var/www/html/index.html
-    - curl http://localhost/ | grep foo
+    - env
+    - sh -c "echo $container"
+    - rpm -qv hello
+    - hello world!
+
+provision:
+    how: container
+    image: $IMAGE
