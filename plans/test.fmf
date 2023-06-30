@@ -4,7 +4,9 @@ discover:
     how: shell
     tests:
       - name: csmock
-        test: csmock -t cppcheck,clang /tmp/*.src.rpm
+        test: "csmock --all-tools /tmp/*.src.rpm -o $TMT_TEST_DATA --force && cp $TMT_TEST_DATA/scan-results.html $TMT_TEST_DATA/viewer.html && echo -e '- result: pass\n  name: /' > $TMT_TEST_DATA/results.yaml"
+        result: custom
+        require: bash
 prepare:
   - name: packages
     how: install
