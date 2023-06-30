@@ -1,13 +1,18 @@
----
+summary:
+    Check SRPM files with csmock
+discover:
+    how: shell
+    tests:
+      - name: csmock
+        test: "csmock --all-tools /tmp/*.src.rpm -o $TMT_TEST_DATA --force && echo -e '- result: pass' > $TMT_TEST_DATA/results.yaml || echo -e '- result: fail' > $TMT_TEST_DATA/results.yaml ; echo -e '  name: /\n  log:\n  - scan.log\n  - scan-results.html' >> $TMT_TEST_DATA/results.yaml"
+        result: custom
+        require: bash
 prepare:
-  how: install
-  package:
-    - curl
-    - httpd
-
+  - name: packages
+    how: install
+    package:
+    - csmock
+  - how: shell
+    script: cd /tmp && curl -O "https://kojipkgs.fedoraproject.org//packages/ksh/1.0.4/1.fc38/src/ksh-1.0.4-1.fc38.src.rpm"
 execute:
-  how: tmt
-  script:
-    - systemctl start httpd
-    - echo foo > /var/www/html/index.html
-    - curl http://localhost/ | grep foo
+    how: tmt
