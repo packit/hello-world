@@ -13,6 +13,6 @@ prepare:
     package:
     - csmock
   - how: shell
-    script: cd /tmp && curl -O ${PACKIT_SRPM_URL}
+    script: cd /tmp && curl -O "https://kojipkgs.fedoraproject.org//packages/ksh/1.0.4/1.fc38/src/ksh-1.0.4-1.fc38.src.rpm"
 execute:
     how: tmt
