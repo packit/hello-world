@@ -30,8 +30,6 @@ jobs:
   image_customizations:
     packages: [hello-world]
   image_distribution: fedora-38
-  owner: packit
-  project: packit-hello-world-1481
   copr_chroot: fedora-38-x86_64
 
 
