@@ -22,13 +22,13 @@ packages:
       - world.spec
 
 jobs:
-- job: copr_build
-  trigger: pull_request
-  packages:
-  - hello
-  - world
-  targets:
-  - fedora-rawhide
+#- job: copr_build
+#  trigger: pull_request
+#  packages:
+#  - hello
+#  - world
+#  targets:
+#  - fedora-rawhide
 
 - job: copr_build
   trigger: pull_request
@@ -37,12 +37,12 @@ jobs:
   targets:
   - fedora-branched
 
-- job: copr_build
-  trigger: pull_request
-  packages:
-  - world
-  targets:
-  - fedora-stable
+#- job: copr_build
+#  trigger: pull_request
+#  packages:
+#  - world
+#  targets:
+#  - fedora-stable
 
 - job: copr_build
   trigger: release
