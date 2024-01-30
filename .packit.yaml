@@ -1,8 +1,7 @@
 ---
 packit_instances: ["prod", "stg"]
 specfile_path: hello.spec
-files_to_sync:
-  - .packit.yaml
+synced_files:
   - hello.spec
 upstream_package_name: hello
 downstream_package_name: hello
@@ -14,28 +13,30 @@ jobs:
 - job: copr_build
   trigger: pull_request
   targets:
-  - fedora-stable-x86_64
-  - fedora-rawhide-x86_64
+  - centos-stream-9-x86_64
+- job: tests
+  trigger: pull_request
+  fmf_url: https://gitlab.com/CentOS/Integration/compose-tests
+  fmf_ref: main
+  targets:
+  - centos-stream-9-x86_64
 
 - job: copr_build
   trigger: release
-  targets:
-  - fedora-stable
+  metadata:
+    targets:
+    - fedora-stable
 
 - job: copr_build
   trigger: commit
-  branch: main
-  targets:
-    - fedora-stable
-
-- job: tests
-  trigger: pull_request
-  targets:
-  - fedora-stable-x86_64
-  - fedora-rawhide-x86_64
+  metadata:
+    branch: main
+    targets:
+      - fedora-stable
 
 - job: propose_downstream
   trigger: release
   packit_instances: ["stg"]
-  dist_git_branches:
-  - fedora-all
+  metadata:
+    dist-git-branch: fedora-all
+
