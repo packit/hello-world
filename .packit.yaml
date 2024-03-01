@@ -1,41 +1,23 @@
 ---
-packit_instances: ["prod", "stg"]
-specfile_path: hello.spec
-files_to_sync:
-  - .packit.yaml
-  - hello.spec
-upstream_package_name: hello
-downstream_package_name: hello
-# actions:
-#   post-upstream-clone: "python3 setup.py sdist --dist-dir ."
-# current_version_command: ["python3", "setup.py", "--version"]
-# create_tarball_command: ["python3", "setup.py", "sdist", "--dist-dir", "."]
+packit_instances: ["stg", "prod"]
+
 jobs:
 - job: copr_build
   trigger: pull_request
   targets:
-  - fedora-stable-x86_64
-  - fedora-rawhide-x86_64
-
-- job: copr_build
-  trigger: release
-  targets:
-  - fedora-stable
-
-- job: copr_build
-  trigger: commit
-  branch: main
-  targets:
-    - fedora-stable
-
-- job: tests
-  trigger: pull_request
-  targets:
-  - fedora-stable-x86_64
-  - fedora-rawhide-x86_64
-
-- job: propose_downstream
-  trigger: release
-  packit_instances: ["stg"]
-  dist_git_branches:
   - fedora-all
+
+- job: vm_image_build
+  trigger: pull_request
+  image_request:
+    architecture: x86_64
+    image_type: aws
+    upload_request:
+      type: aws
+      options:
+        share_with_accounts:
+        - "727920394381" # ARR
+  image_distribution: fedora-39
+  copr_chroot: fedora-39-x86_64
+  image_customizations:
+    packages: [hello-world]
