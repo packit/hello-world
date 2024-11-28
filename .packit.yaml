@@ -1,41 +1,74 @@
 ---
-packit_instances: ["prod", "stg"]
+packit_instances: ["stg"]
 specfile_path: hello.spec
 files_to_sync:
   - .packit.yaml
   - hello.spec
 upstream_package_name: hello
 downstream_package_name: hello
-# actions:
-#   post-upstream-clone: "python3 setup.py sdist --dist-dir ."
-# current_version_command: ["python3", "setup.py", "--version"]
-# create_tarball_command: ["python3", "setup.py", "sdist", "--dist-dir", "."]
+
 jobs:
 - job: copr_build
   trigger: pull_request
+  identifier: latest
   targets:
-  - fedora-stable-x86_64
+  - fedora-latest-x86_64
+
+- job: copr_build
+  trigger: pull_request
+  targets:
   - fedora-rawhide-x86_64
-
-- job: copr_build
-  trigger: release
-  targets:
-  - fedora-stable
-
-- job: copr_build
-  trigger: commit
-  branch: main
-  targets:
-    - fedora-stable
 
 - job: tests
   trigger: pull_request
+  fmf_url: https://github.com/packit/tmt-plans
+  fmf_ref: main
+  tmt_plan: "/plans/rpminspect"
   targets:
-  - fedora-stable-x86_64
-  - fedora-rawhide-x86_64
+    - fedora-latest-x86_64
+    - fedora-rawhide-x86_64
 
-- job: propose_downstream
-  trigger: release
-  packit_instances: ["stg"]
-  dist_git_branches:
-  - fedora-all
+- job: tests
+  labels:
+    - inspect
+  identifier: inspect-latest
+  trigger: pull_request
+  fmf_url: https://github.com/packit/tmt-plans
+  fmf_ref: main
+  tmt_plan: "/plans/rpminspect"
+  targets:
+    - fedora-latest-x86_64
+
+- job: tests
+  manual_trigger: false
+  labels:
+    - inspect
+  identifier: inspect-rawhide
+  trigger: pull_request
+  fmf_url: https://github.com/packit/tmt-plans
+  fmf_ref: main
+  tmt_plan: "/plans/rpminspect"
+  targets:
+    - fedora-rawhide-x86_64
+
+- job: tests
+  labels:
+    - lint
+  identifier: lint-latest
+  trigger: pull_request
+  fmf_url: https://github.com/packit/tmt-plans
+  fmf_ref: main
+  tmt_plan: "/plans/rpmlint"
+  targets:
+    - fedora-latest-x86_64
+
+- job: tests
+  labels:
+    - lint
+  identifier: lint-rawhide
+  trigger: pull_request
+  fmf_url: https://github.com/packit/tmt-plans
+  fmf_ref: main
+  tmt_plan: "/plans/rpmlint"
+  targets:
+    - fedora-rawhide-x86_64
