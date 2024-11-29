@@ -17,7 +17,7 @@ BuildRequires:  python3-setuptools
 %autosetup -n %{name}-%{version}
 
 %build
-%if 0%{?fedora} < 37
+%if 0%{?fedora} < 42
 exit 1
 %endif
 %py3_build
