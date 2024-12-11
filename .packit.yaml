@@ -17,7 +17,7 @@ jobs:
       options:
         share_with_accounts:
         - "727920394381" # ARR
-  image_distribution: fedora-39
-  copr_chroot: fedora-39-x86_64
+  image_distribution: fedora-41
+  copr_chroot: fedora-41-x86_64
   image_customizations:
     packages: [hello-world]
