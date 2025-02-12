@@ -1,10 +1,10 @@
-Name:           hello
+Name:           hello-world
 Version:        0.1.0
 Release:        1%{?dist}
 Summary:        Nice and a polite tool to make your day
 License:        MIT
 URL:            https://github.com/packit-service/hello-world
-Source0:        hello-%{version}.tar.gz
+Source0:        hello-world-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
