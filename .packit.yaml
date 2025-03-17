@@ -1,5 +1,5 @@
 ---
-packit_instances: ["prod", "stg"]
+packit_instances: [ "stg"]
 specfile_path: hello.spec
 files_to_sync:
   - .packit.yaml
@@ -30,8 +30,9 @@ jobs:
 
 - job: tests
   trigger: pull_request
+  use_target_repo_for_fmf_url: true
   targets:
-  - fedora-stable-x86_64
+  #- fedora-stable-x86_64
   - fedora-rawhide-x86_64
 
 - job: propose_downstream
