@@ -1,0 +1,95 @@
+diff --git a/.packit.yaml b/.packit.yaml
+index dce8acc..86ec72d 100644
+--- a/.packit.yaml
++++ b/.packit.yaml
+@@ -1,41 +1,23 @@
+ ---
+-packit_instances: ["prod", "stg"]
+-specfile_path: hello.spec
+-files_to_sync:
+-  - .packit.yaml
+-  - hello.spec
+-upstream_package_name: hello
+-downstream_package_name: hello
+-# actions:
+-#   post-upstream-clone: "python3 setup.py sdist --dist-dir ."
+-# current_version_command: ["python3", "setup.py", "--version"]
+-# create_tarball_command: ["python3", "setup.py", "sdist", "--dist-dir", "."]
++packit_instances: ["stg"]
++
+ jobs:
+ - job: copr_build
+   trigger: pull_request
+   targets:
+-  - fedora-stable-x86_64
+-  - fedora-rawhide-x86_64
++  - fedora-39-x86_64
+ 
+-- job: copr_build
+-  trigger: release
+-  targets:
+-  - fedora-stable
+-
+-- job: copr_build
+-  trigger: commit
+-  branch: main
+-  targets:
+-    - fedora-stable
+-
+-- job: tests
++- job: vm_image_build
+   trigger: pull_request
+-  targets:
+-  - fedora-stable-x86_64
+-  - fedora-rawhide-x86_64
+-
+-- job: propose_downstream
+-  trigger: release
+-  packit_instances: ["stg"]
+-  dist_git_branches:
+-  - fedora-all
++  copr_chroot: fedora-39-x86_64
++  image_request:
++    architecture: x86_64
++    image_type: aws
++    upload_request:
++      type: aws
++      options:
++        share_with_accounts:
++        - "727920394381" # ARR
++  image_customizations:
++    packages: [hello-world]
++  image_distribution: fedora-39
+diff --git a/hello.spec b/hello-world.spec
+similarity index 88%
+rename from hello.spec
+rename to hello-world.spec
+index afd23b0..9c5f335 100644
+--- a/hello.spec
++++ b/hello-world.spec
+@@ -1,10 +1,10 @@
+-Name:           hello
++Name:           hello-world
+ Version:        0.1.0
+ Release:        1%{?dist}
+ Summary:        Nice and a polite tool to make your day
+ License:        MIT
+ URL:            https://github.com/packit-service/hello-world
+-Source0:        hello-%{version}.tar.gz
++Source0:        hello-world-%{version}.tar.gz
+ BuildArch:      noarch
+ BuildRequires:  python3-devel
+ BuildRequires:  python3-setuptools
+diff --git a/hello_world/__init__.py b/hello_world/__init__.py
+index dac3d3b..2fbff37 100644
+--- a/hello_world/__init__.py
++++ b/hello_world/__init__.py
+@@ -19,7 +19,7 @@ def main():
+     args_n = len(sys.argv)
+     if args_n <= 1 or args_n > 2:
+         usage()
+-    print(f"Hello {sys.argv[1]}")
++    print(f"Hello \033[0;36m{sys.argv[1]}\033[0m")
+ 
+ 
+ if __name__ == '__main__':
