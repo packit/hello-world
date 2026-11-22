@@ -1,4 +1,5 @@
 ---
+packit_instances: ["stg"]
 packit_instances: ["prod", "stg"]
 specfile_path: hello.spec
 files_to_sync:
